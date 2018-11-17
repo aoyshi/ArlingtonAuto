@@ -39,7 +39,7 @@ public class RevokeRenterActivity extends BaseMenuActivity {
         String username = usernameField.getText().toString().trim();
         User targetUser = UserDAO.getUser(username);
         if(targetUser == null) {
-            Toasty.error(this, "This username does not exist!"+username, Toast.LENGTH_LONG, true).show();
+            Toasty.error(this, "This username does not exist!", Toast.LENGTH_LONG, true).show();
         }
         else {
             /**

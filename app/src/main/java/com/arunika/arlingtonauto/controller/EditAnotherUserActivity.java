@@ -1,18 +1,17 @@
 package com.arunika.arlingtonauto.controller;
-import android.content.SharedPreferences;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Toast;
-import com.arunika.arlingtonauto.DAO.UserDAO;
 import com.arunika.arlingtonauto.R;
 import com.arunika.arlingtonauto.model.User;
-import com.google.gson.Gson;
 
 import es.dmoral.toasty.Toasty;
+import com.arunika.arlingtonauto.DAO.UserDAO;
 
-public class UpdateProfileActivity extends BaseMenuActivity {
+public class EditAnotherUserActivity extends BaseMenuActivity {
 
     private EditText firstNameField;
     private EditText lastNameField;
@@ -23,23 +22,18 @@ public class UpdateProfileActivity extends BaseMenuActivity {
     private CheckBox aacMembershipCheckBox;
     private EditText role;
     private UserDAO UserDAO;
-    private SharedPreferences preferences;
-    private User currentUser;
+    private User otherUser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_edit_own_profile);
-        initViews(); //initialize all text field objects
-        this.UserDAO = UserDAO.getInstance(this); //singleton
-
-        //get currently logged in user from stored preference
-        preferences = getSharedPreferences("PREFS", 0);
-        if (preferences.contains("currentUser")) {
-            final Gson gson = new Gson();
-            currentUser = gson.fromJson(preferences.getString("currentUser", ""), User.class);
-            displayProfile(currentUser);//display user attributes in form
-        }
+        setContentView(R.layout.activity_edit_another_profile);
+        initViews();
+        UserDAO = UserDAO.getInstance(this);
+        //get user to be edited from previous activity
+        Intent intent = getIntent();
+        otherUser = (User) intent.getSerializableExtra("otherUser");
+        displayProfile(otherUser);
     }
 
     private void initViews() {
@@ -47,12 +41,12 @@ public class UpdateProfileActivity extends BaseMenuActivity {
         this.lastNameField = (EditText) findViewById(R.id.lastName);
         this.utaIdField = (EditText) findViewById(R.id.utaId);
         this.usernameField = (EditText) findViewById(R.id.username);
-        this.usernameField.setEnabled(false);
+        this.usernameField.setEnabled(false); //cant edit username
         this.passwordField = (EditText) findViewById(R.id.password);
         this.emailField = (EditText) findViewById(R.id.email);
         this.aacMembershipCheckBox = (CheckBox) findViewById(R.id.aacMembership);
         this.role = (EditText) findViewById(R.id.role);
-        this.role.setEnabled(false);
+        this.role.setEnabled(false); //cant edit role
     }
 
     //populates form with user data
@@ -88,17 +82,7 @@ public class UpdateProfileActivity extends BaseMenuActivity {
         //saved updates to DB
         UserDAO.updateUser(updatedUser);
 
-        //update currentUser object saved in preferences (session)
-        SharedPreferences.Editor editor = preferences.edit();
-        Gson gson = new Gson();
-        String newCurrentUser = gson.toJson(updatedUser);
-        editor.putString("currentUser", newCurrentUser);
-        editor.apply();
-
         //display confirmation
         Toasty.success(this, "Profile Updated Successfully!", Toast.LENGTH_LONG, true).show();
     }
 }
-
-
-

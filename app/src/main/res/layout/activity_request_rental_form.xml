@@ -19,7 +19,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/revokeBtn"
+        android:id="@+id/searchBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="26dp"
@@ -78,7 +78,7 @@
         android:layout_marginBottom="68dp"
         android:text="Capacity:"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/revokeBtn"
+        app:layout_constraintBottom_toTopOf="@+id/searchBtn"
         app:layout_constraintEnd_toStartOf="@+id/capacity"
         app:layout_constraintStart_toStartOf="parent" />
 

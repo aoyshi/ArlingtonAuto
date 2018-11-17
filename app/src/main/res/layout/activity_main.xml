@@ -74,7 +74,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
     <Button
-        android:id="@+id/revokeBtn"
+        android:id="@+id/searchBtn"
         android:layout_width="174dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="31dp"
@@ -96,7 +96,7 @@
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/textView10"
-        app:layout_constraintTop_toBottomOf="@+id/revokeBtn" />
+        app:layout_constraintTop_toBottomOf="@+id/searchBtn" />
 
     <EditText
         android:id="@+id/password"

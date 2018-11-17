@@ -16,7 +16,6 @@ import es.dmoral.toasty.Toasty;
  *  This inheritance keeps code centralized and cleaner.
  */
 public class AdminHomeActivity extends SystemUserActivity {
-    private User currentUser;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,7 +25,7 @@ public class AdminHomeActivity extends SystemUserActivity {
         startActivity(new Intent(this,RevokeRenterActivity.class));
     }
     public void editAnotherUser(View view) {
-        //startActivity(new Intent(this,EditAnotherUserActivity.class));
+        startActivity(new Intent(this,FindUserProfileActivity.class));
     }
 }
 

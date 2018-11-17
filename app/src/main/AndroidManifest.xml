@@ -23,5 +23,7 @@
         <activity android:name=".controller.RevokeRenterActivity" />
         <activity android:name=".controller.UpdateProfileActivity" />
         <activity android:name=".controller.SystemUserActivity" />
+        <activity android:name=".controller.FindUserProfileActivity" />
+        <activity android:name=".controller.EditAnotherUserActivity" />
     </application>
 </manifest>

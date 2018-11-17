@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".controller.AdminHomeActivity"
+    tools:layout_editor_absoluteY="81dp">
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginTop="38dp"
+        android:layout_marginBottom="36dp"
+        android:text="Admin Home"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/editOwnProfileBtn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/editOwnProfileBtn"
+        android:layout_width="241dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="14dp"
+        android:onClick="editOwnProfile"
+        android:text="Edit Own Profile"
+        app:layout_constraintBottom_toTopOf="@+id/editAnotherProfileBtn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+    <Button
+        android:id="@+id/editAnotherProfileBtn"
+        android:layout_width="234dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="1dp"
+        android:layout_marginBottom="14dp"
+        android:onClick="editAnotherUser"
+        android:text="Edit Another User's Profile"
+        app:layout_constraintBottom_toTopOf="@+id/revokeRenterBtn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editOwnProfileBtn" />
+
+    <Button
+        android:id="@+id/revokeRenterBtn"
+        android:layout_width="239dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="21dp"
+        android:onClick="revokeRenter"
+        android:text="Revoke A Renter"
+        app:layout_constraintBottom_toTopOf="@+id/logoutBtn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editAnotherProfileBtn" />
+
+    <Button
+        android:id="@+id/logoutBtn"
+        android:layout_width="155dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="132dp"
+        android:onClick="logout"
+        android:text="Logout"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/revokeRenterBtn" />
+
+</android.support.constraint.ConstraintLayout>

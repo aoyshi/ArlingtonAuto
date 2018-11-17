@@ -2,7 +2,6 @@ package com.arunika.arlingtonauto.DATABASE;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-
 /**
  * This is the entire singleton SQLITE database.
  */
@@ -39,10 +38,10 @@ public class DBHelper extends SQLiteOpenHelper {
     //RESERVATION TABLE COLUMNS
     public static final String TABLE_RESERVATION = "RESERVATION";
     public static final String COLUMN_RESERVATION_ID = "id";
-    public static final String COLUMN_RESERVATION_CARD_ID = "cardId";
+    public static final String COLUMN_RESERVATION_CAR_ID = "carId";
     public static final String COLUMN_RESERVATION_USER_ID = "userId";
-    public static final String COLUMN_RESERVATION_CHECK_OUT_BY = "checkOutBy";
-    public static final String COLUMN_RESERVATION_RETURN_BY = "returnBy";
+    public static final String COLUMN_RESERVATION_CHECK_OUT = "checkOut";
+    public static final String COLUMN_RESERVATION_RETURN = "return";
     public static final String COLUMN_RESERVATION_HAS_GPS = "hasGps";
     public static final String COLUMN_RESERVATION_HAS_ONSTAR = "hasOnstar";
     public static final String COLUMN_RESERVATION_HAS_SIRIUS = "hasSirius";
@@ -63,31 +62,29 @@ public class DBHelper extends SQLiteOpenHelper {
             + COLUMN_USER_IS_REVOKED + " INTEGER NOT NULL"
             + ");";
     //CREATE USER CAR
-    /*private static final String SQL_CREATE_TABLE_CAR = "CREATE TABLE " + TABLE_CAR + "("
-            + COLUMN_USER_ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
-            + COLUMN_USER_FIRST_NAME + " TEXT NOT NULL,"
-            + COLUMN_USER_LAST_NAME + " TEXT NOT NULL,"
-            + COLUMN_USER_UTA_ID + " TEXT NOT NULL,"
-            + COLUMN_USER_USERNAME + " TEXT NOT NULL UNIQUE,"
-            + COLUMN_USER_PASSWORD + " TEXT NOT NULL,"
-            + COLUMN_USER_EMAIL + " TEXT NOT NULL,"
-            + COLUMN_USER_AAC_MEMBERSHIP + " INTEGER NOT NULL,"
-            + COLUMN_USER_ROLE + " TEXT NOT NULL,"
-            + COLUMN_USER_IS_REVOKED + " INTEGER NOT NULL"
+    private static final String SQL_CREATE_TABLE_CAR = "CREATE TABLE " + TABLE_CAR + "("
+            + COLUMN_CAR_ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
+            + COLUMN_CAR_CAPACITY + " INTEGER NOT NULL,"
+            + COLUMN_CAR_WEEKDAY_RATE + " DOUBLE NOT NULL,"
+            + COLUMN_CAR_WEEKEND_RATE + " DOUBLE NOT NULL,"
+            + COLUMN_CAR_WEEKLY_RATE + " DOUBLE NOT NULL,"
+            + COLUMN_CAR_DAILY_GPS + " DOUBLE NOT NULL,"
+            + COLUMN_CAR_DAILY_SIRIUS + " DOUBLE NOT NULL,"
+            + COLUMN_CAR_DAILY_ONSTAR + " DOUBLE NOT NULL,"
             + ");";
     //CREATE USER RESERVATION
     private static final String SQL_CREATE_TABLE_RESERVATION = "CREATE TABLE " + TABLE_RESERVATION + "("
-            + COLUMN_USER_ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
-            + COLUMN_USER_FIRST_NAME + " TEXT NOT NULL,"
-            + COLUMN_USER_LAST_NAME + " TEXT NOT NULL,"
-            + COLUMN_USER_UTA_ID + " TEXT NOT NULL,"
-            + COLUMN_USER_USERNAME + " TEXT NOT NULL UNIQUE,"
-            + COLUMN_USER_PASSWORD + " TEXT NOT NULL,"
-            + COLUMN_USER_EMAIL + " TEXT NOT NULL,"
-            + COLUMN_USER_AAC_MEMBERSHIP + " INTEGER NOT NULL,"
-            + COLUMN_USER_ROLE + " TEXT NOT NULL,"
-            + COLUMN_USER_IS_REVOKED + " INTEGER NOT NULL"
-            + ");";*/
+            + COLUMN_RESERVATION_ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
+            + COLUMN_RESERVATION_USER_ID + " INTEGER NOT NULL,"
+            + COLUMN_RESERVATION_CAR_ID + " INTEGER NOT NULL,"
+            + COLUMN_RESERVATION_CHECK_OUT + " DATETIME NOT NULL,"
+            + COLUMN_RESERVATION_RETURN + " DATETIME NOT NULL,"
+            + COLUMN_RESERVATION_HAS_GPS + " INTEGER NOT NULL,"
+            + COLUMN_RESERVATION_HAS_ONSTAR + " INTEGER NOT NULL,"
+            + COLUMN_RESERVATION_HAS_SIRIUS + " INTEGER NOT NULL,"
+            + "FOREIGN KEY ("+COLUMN_RESERVATION_USER_ID+") REFERENCES "+TABLE_USER+"("+COLUMN_USER_ID+") ,"
+            + "FOREIGN KEY ("+COLUMN_RESERVATION_CAR_ID+") REFERENCES "+TABLE_CAR+"("+COLUMN_CAR_ID+") "
+            + ");";
 
     private static DBHelper instance;
     public static synchronized DBHelper getInstance(Context context) {
@@ -113,13 +110,15 @@ public class DBHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL(SQL_CREATE_TABLE_USER);
+        db.execSQL(SQL_CREATE_TABLE_CAR);
+        db.execSQL(SQL_CREATE_TABLE_RESERVATION);
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_USER);
-        //db.execSQL("DROP TABLE IF EXISTS " + TABLE_CAR);
-        //db.execSQL("DROP TABLE IF EXISTS " + TABLE_RESERVATION);
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_CAR);
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_RESERVATION);
         onCreate(db);
     }
 }

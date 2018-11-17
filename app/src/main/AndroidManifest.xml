@@ -21,5 +21,7 @@
         <activity android:name=".controller.ManagerHomeActivity" />
         <activity android:name=".controller.AdminHomeActivity" />
         <activity android:name=".controller.RevokeRenterActivity" />
+        <activity android:name=".controller.UpdateProfileActivity" />
+        <activity android:name=".controller.SystemUserActivity" />
     </application>
 </manifest>

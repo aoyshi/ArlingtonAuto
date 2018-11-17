@@ -1,9 +1,11 @@
-package com.arunika.arlingtonauto.DAO;
-
+package com.arunika.arlingtonauto.DATABASE;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+/**
+ * This is the entire singleton SQLITE database.
+ */
 public class DBHelper extends SQLiteOpenHelper {
     //DATABASE INFO
     private static final String DB_NAME = "ArlingtonAuto.db";

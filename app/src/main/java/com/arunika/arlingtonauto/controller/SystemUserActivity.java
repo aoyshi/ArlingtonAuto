@@ -1,40 +1,29 @@
-package com.arunika.arlingtonauto;
+package com.arunika.arlingtonauto.controller;
 
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
+import android.view.View;
 import android.widget.Toast;
+import com.arunika.arlingtonauto.model.User;
+import com.google.gson.Gson;
+import es.dmoral.toasty.Toasty;
 
-/** PLEASE NOTE:
- *  This class must be extended from all other activities you make
- *  It creates the three-dot nav menu in the action bar for Home and Logout
- *  DO NOT include in User HomeScreens or App MainScreen.
- */
+public class SystemUserActivity extends AppCompatActivity {
 
-public class BaseMenuActivity extends AppCompatActivity {
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.mymenu, menu);
-        return true;
+    public void editOwnProfile(View view) {
+        startActivity(new Intent(this,UpdateProfileActivity.class));
     }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.home:
-                /*functionality hasnt been added yet*/
-                Toast.makeText(this, "Go Home", Toast.LENGTH_SHORT).show();
-                return true;
-            case R.id.logout:
-                /*functionality hasnt been added yet*/
-                Toast.makeText(this, "Logged Out", Toast.LENGTH_SHORT).show();
-                return true;
-            default:
-                return super.onOptionsItemSelected(item);
-        }
+    public void logout(View view) {
+        //REMOVE all stored session variables
+        SharedPreferences preferences = getSharedPreferences("PREFS",0);
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.clear();
+        editor.apply();
+        finish();
+        //display success msg and redirect to main screen (login)
+        Toasty.success(this,"Successfully logged out!", Toast.LENGTH_SHORT, true).show();
+        startActivity(new Intent(this, MainActivity.class));
     }
 
 }

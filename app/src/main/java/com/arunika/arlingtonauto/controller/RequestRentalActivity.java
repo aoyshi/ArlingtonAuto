@@ -47,14 +47,15 @@ public class RequestRentalActivity extends BaseMenuActivity {
 
 
         //get list of available cars in given time range
-        ArrayList<Car> availableCars = CarDAO.getInstance(this).getAvailableCarsForCustomer(startTimeAsString,
-                endTimeAsString, capacity);
+        ArrayList<Car> availableCars = CarDAO.getInstance(this).getAvailableCarsForCustomer(
+                startTimeAsString, endTimeAsString, capacity);
 
         ArrayList<ReservationDetails> availableRentalList = new ArrayList<>();
         //for each available car found, calculate price and make preliminary reservation objects
         for(Car car : availableCars) {
             ReservationDetails reservationDetails = new ReservationDetails();
             //calculate price (without add-ons,tax,discount)
+            reservationDetails.setCarId(car.getId());
             reservationDetails.setCarName(car.getName());
             reservationDetails.setCapacity(car.getCapacity());
             reservationDetails.setStartAndEndTimes(startTimeAsString,endTimeAsString);
@@ -67,9 +68,7 @@ public class RequestRentalActivity extends BaseMenuActivity {
         if(availableRentalList != null) {
             //send list to next activity
             Intent intent = new Intent();
-            Bundle bundle = new Bundle();
-            bundle.putSerializable("availableResDetailsList",(Serializable) availableRentalList);
-            intent.putExtra("bundle",bundle);
+            intent.putExtra("availableResDetailsList",(Serializable) availableRentalList);
             intent.setClass(this,ReserveRentalActivity.class);
             startActivity(intent);
         }

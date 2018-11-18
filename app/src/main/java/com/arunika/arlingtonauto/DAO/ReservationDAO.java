@@ -29,4 +29,18 @@ public class ReservationDAO {
             e.printStackTrace();
         }
     }
+    public static long insertReservation(Reservation reservation) {
+        ContentValues values = new ContentValues();
+        values.put(DBHelper.COLUMN_RESERVATION_USER_ID, reservation.getUserId());
+        values.put(DBHelper.COLUMN_RESERVATION_CAR_ID, reservation.getCarId());
+        values.put(DBHelper.COLUMN_RESERVATION_CHECK_OUT, reservation.getEndTimeAsString());
+        values.put(DBHelper.COLUMN_RESERVATION_RETURN, reservation.getEndTimeAsString());
+        values.put(DBHelper.COLUMN_RESERVATION_HAS_GPS, reservation.getHasGps());
+        values.put(DBHelper.COLUMN_RESERVATION_HAS_ONSTAR, reservation.getHasOnstar());
+        values.put(DBHelper.COLUMN_RESERVATION_HAS_SIRIUS, reservation.getHasSirius());
+        values.put(DBHelper.COLUMN_RESERVATION_TOTAL_PRICE, reservation.getTotalPrice());
+        long insertId = Database.insert(DBHelper.TABLE_RESERVATION, null, values);
+        return insertId;
+
+    }
 }

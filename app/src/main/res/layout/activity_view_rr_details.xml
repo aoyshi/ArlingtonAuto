@@ -147,12 +147,12 @@
         android:layout_marginBottom="17dp"
         android:text="3"
         android:textSize="19sp"
-        app:layout_constraintBottom_toTopOf="@+id/checkoutBy"
+        app:layout_constraintBottom_toTopOf="@+id/checkOut"
         app:layout_constraintEnd_toEndOf="@+id/totalPrice"
         app:layout_constraintStart_toEndOf="@+id/textView38" />
 
     <TextView
-        android:id="@+id/checkoutBy"
+        android:id="@+id/checkOut"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="1dp"
@@ -168,8 +168,8 @@
         android:layout_marginTop="19dp"
         android:text="11-02-2018 17:00"
         android:textSize="19sp"
-        app:layout_constraintStart_toStartOf="@+id/checkoutBy"
-        app:layout_constraintTop_toBottomOf="@+id/checkoutBy" />
+        app:layout_constraintStart_toStartOf="@+id/checkOut"
+        app:layout_constraintTop_toBottomOf="@+id/checkOut" />
 
     <TextView
         android:id="@+id/extras"

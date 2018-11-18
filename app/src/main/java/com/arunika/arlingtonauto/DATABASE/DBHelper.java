@@ -45,6 +45,7 @@ public class DBHelper extends SQLiteOpenHelper {
     public static final String COLUMN_RESERVATION_HAS_GPS = "hasGps";
     public static final String COLUMN_RESERVATION_HAS_ONSTAR = "hasOnstar";
     public static final String COLUMN_RESERVATION_HAS_SIRIUS = "hasSirius";
+    public static final String COLUMN_RESERVATION_TOTAL_PRICE = "totalPrice";
     /**
      * SQL Create Statements
      */
@@ -83,6 +84,7 @@ public class DBHelper extends SQLiteOpenHelper {
             + COLUMN_RESERVATION_HAS_GPS + " INTEGER NOT NULL,"
             + COLUMN_RESERVATION_HAS_ONSTAR + " INTEGER NOT NULL,"
             + COLUMN_RESERVATION_HAS_SIRIUS + " INTEGER NOT NULL,"
+            + COLUMN_RESERVATION_TOTAL_PRICE + " DOUBLE NOT NULL,"
             + "FOREIGN KEY ("+COLUMN_RESERVATION_USER_ID+") REFERENCES "+TABLE_USER+"("+COLUMN_USER_ID+") ,"
             + "FOREIGN KEY ("+COLUMN_RESERVATION_CAR_ID+") REFERENCES "+TABLE_CAR+"("+COLUMN_CAR_ID+") "
             + ");";
@@ -112,6 +114,11 @@ public class DBHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         db.execSQL(SQL_CREATE_TABLE_USER);
         db.execSQL(SQL_CREATE_TABLE_CAR);
+        db.execSQL(SQL_CREATE_TABLE_RESERVATION);
+    }
+
+    public void update(SQLiteDatabase db) {
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_RESERVATION);
         db.execSQL(SQL_CREATE_TABLE_RESERVATION);
     }
 

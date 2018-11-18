@@ -148,11 +148,11 @@ public class Reservation implements Serializable {
     }
 
     //with add-ons,tax,discount
-    public double calculateFinalPrice (Car car, int age, int applyDiscount) {
+    public double calculateFinalPrice (Car car, int applyDiscount) {
         int days = daysBetween(startTime,endTime);
-        double discount=0,fee=0;
+        double discount=0;
         //raw price from car rates
-        double finalPrice = this.totalPrice + fee;
+        double finalPrice = calculateTotalPrice(car);
         //add add-on prices
         if(hasGps==1)
             finalPrice += (days * car.getDailyGps());

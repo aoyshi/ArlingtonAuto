@@ -54,11 +54,12 @@ public class CarDAO {
     private static ArrayList<Car> getCarList(String query) {
         ArrayList<Car> carList = new ArrayList<>();
         Cursor cursor = Database.rawQuery(query, null);
-        Car car = new Car();
+        Car car;
         try {
             // looping through all rows and adding car to list
             if (cursor.moveToFirst()) {
                 do {
+                    car = new Car();
                     //set car attributes from db
                     car.setId(cursor.getInt(cursor.getColumnIndex(DBHelper.COLUMN_CAR_ID)));
                     car.setName(cursor.getString(cursor.getColumnIndex(DBHelper.COLUMN_CAR_NAME)));
@@ -83,4 +84,25 @@ public class CarDAO {
         return carList;
     }
 
+    public static Car getCar(int id) {
+        Car car = null;
+        String query = "SELECT * FROM " + DBHelper.TABLE_CAR
+                + " WHERE " + DBHelper.COLUMN_CAR_ID + " = '"+id+"';";
+        Cursor cursor = Database.rawQuery(query,null);
+        if (cursor.moveToFirst()) {
+            car = new Car();
+            //set car attributes from db
+            car.setId(cursor.getInt(cursor.getColumnIndex(DBHelper.COLUMN_CAR_ID)));
+            car.setName(cursor.getString(cursor.getColumnIndex(DBHelper.COLUMN_CAR_NAME)));
+            car.setCapacity(cursor.getInt(cursor.getColumnIndex(DBHelper.COLUMN_CAR_CAPACITY)));
+            car.setWeekdayRate(cursor.getDouble(cursor.getColumnIndex(DBHelper.COLUMN_CAR_WEEKDAY_RATE)));
+            car.setWeekendRate(cursor.getDouble(cursor.getColumnIndex(DBHelper.COLUMN_CAR_WEEKEND_RATE)));
+            car.setWeeklyRate(cursor.getDouble(cursor.getColumnIndex(DBHelper.COLUMN_CAR_WEEKLY_RATE)));
+            car.setDailyGps(cursor.getDouble(cursor.getColumnIndex(DBHelper.COLUMN_CAR_DAILY_GPS)));
+            car.setDailyOnstar(cursor.getDouble(cursor.getColumnIndex(DBHelper.COLUMN_CAR_DAILY_ONSTAR)));
+            car.setDailySirius(cursor.getDouble(cursor.getColumnIndex(DBHelper.COLUMN_CAR_DAILY_SIRIUS)));
+        }
+        cursor.close();
+        return car;
+    }
 }

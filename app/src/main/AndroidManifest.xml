@@ -27,5 +27,7 @@
         <activity android:name=".controller.EditAnotherUserActivity" />
         <activity android:name=".controller.RequestRentalActivity" />
         <activity android:name=".controller.ReserveRentalActivity" />
+        <activity android:name=".controller.ConfirmRentalActivity" />
+        <activity android:name=".controller.SummaryRentalActivity" />
     </application>
 </manifest>

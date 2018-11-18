@@ -28,8 +28,8 @@
         android:text="Username:"
         android:textSize="18sp"
         android:textStyle="bold"
-        app:layout_constraintBaseline_toBaselineOf="@+id/username"
-        app:layout_constraintEnd_toStartOf="@+id/username"
+        app:layout_constraintBaseline_toBaselineOf="@+id/checkOutDate"
+        app:layout_constraintEnd_toStartOf="@+id/checkOutDate"
         app:layout_constraintStart_toStartOf="parent" />
 
 
@@ -61,7 +61,7 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
-        android:id="@+id/username"
+        android:id="@+id/checkOutDate"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="37dp"
@@ -109,6 +109,6 @@
         android:text=""
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/textView6"
-        app:layout_constraintTop_toBottomOf="@+id/username" />
+        app:layout_constraintTop_toBottomOf="@+id/checkOutDate" />
 
 </android.support.constraint.ConstraintLayout>

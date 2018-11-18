@@ -70,7 +70,7 @@ public class UserDAO {
         Cursor cursor = Database.rawQuery(query,null);
         if (cursor.moveToFirst()) {
             user = new User();
-            user.setId(Integer.parseInt(cursor.getString(cursor.getColumnIndex(DBHelper.COLUMN_USER_ID))));
+            user.setId(cursor.getInt(cursor.getColumnIndex(DBHelper.COLUMN_USER_ID)));
             user.setFirstName(cursor.getString(cursor.getColumnIndex(DBHelper.COLUMN_USER_FIRST_NAME)));
             user.setLastName(cursor.getString(cursor.getColumnIndex(DBHelper.COLUMN_USER_LAST_NAME)));
             user.setUtaId(cursor.getString(cursor.getColumnIndex(DBHelper.COLUMN_USER_UTA_ID)));
@@ -78,8 +78,8 @@ public class UserDAO {
             user.setPassword(cursor.getString(cursor.getColumnIndex(DBHelper.COLUMN_USER_PASSWORD)));
             user.setEmail(cursor.getString(cursor.getColumnIndex(DBHelper.COLUMN_USER_EMAIL)));
             user.setRole(cursor.getString(cursor.getColumnIndex(DBHelper.COLUMN_USER_ROLE)));
-            user.setIsRevoked(Integer.parseInt(cursor.getString(cursor.getColumnIndex(DBHelper.COLUMN_USER_IS_REVOKED))));
-            user.setAacMembership(Integer.parseInt(cursor.getString(cursor.getColumnIndex(DBHelper.COLUMN_USER_AAC_MEMBERSHIP))));
+            user.setIsRevoked(cursor.getInt(cursor.getColumnIndex(DBHelper.COLUMN_USER_IS_REVOKED)));
+            user.setAacMembership(cursor.getInt(cursor.getColumnIndex(DBHelper.COLUMN_USER_AAC_MEMBERSHIP)));
         }
         cursor.close();
         return user;

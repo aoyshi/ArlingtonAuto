@@ -152,7 +152,7 @@
         app:layout_constraintTop_toTopOf="@+id/textView18" />
 
     <EditText
-        android:id="@+id/username"
+        android:id="@+id/checkOutDate"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:ems="10"

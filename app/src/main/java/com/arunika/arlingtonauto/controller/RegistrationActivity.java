@@ -37,7 +37,7 @@ public class RegistrationActivity extends AppCompatActivity {
         this.firstNameField = (EditText) findViewById(R.id.firstName);
         this.lastNameField = (EditText) findViewById(R.id.lastName);
         this.utaIdField = (EditText) findViewById(R.id.utaId);
-        this.usernameField = (EditText) findViewById(R.id.username);
+        this.usernameField = (EditText) findViewById(R.id.checkOutDate);
         this.passwordField = (EditText) findViewById(R.id.password);
         this.emailField = (EditText) findViewById(R.id.email);
         this.aacMembershipCheckBox = (CheckBox) findViewById(R.id.aacMembership);

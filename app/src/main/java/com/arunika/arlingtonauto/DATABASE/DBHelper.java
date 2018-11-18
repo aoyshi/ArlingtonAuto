@@ -64,14 +64,15 @@ public class DBHelper extends SQLiteOpenHelper {
     //CREATE USER CAR
     private static final String SQL_CREATE_TABLE_CAR = "CREATE TABLE " + TABLE_CAR + "("
             + COLUMN_CAR_ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
+            + COLUMN_CAR_NAME + " TEXT NOT NULL,"
             + COLUMN_CAR_CAPACITY + " INTEGER NOT NULL,"
             + COLUMN_CAR_WEEKDAY_RATE + " DOUBLE NOT NULL,"
             + COLUMN_CAR_WEEKEND_RATE + " DOUBLE NOT NULL,"
             + COLUMN_CAR_WEEKLY_RATE + " DOUBLE NOT NULL,"
             + COLUMN_CAR_DAILY_GPS + " DOUBLE NOT NULL,"
             + COLUMN_CAR_DAILY_SIRIUS + " DOUBLE NOT NULL,"
-            + COLUMN_CAR_DAILY_ONSTAR + " DOUBLE NOT NULL,"
-            + ");";
+            + COLUMN_CAR_DAILY_ONSTAR + " DOUBLE NOT NULL"
+            + ")";
     //CREATE USER RESERVATION
     private static final String SQL_CREATE_TABLE_RESERVATION = "CREATE TABLE " + TABLE_RESERVATION + "("
             + COLUMN_RESERVATION_ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"

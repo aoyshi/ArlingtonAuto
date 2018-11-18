@@ -26,7 +26,7 @@ public class RequestRentalSearchResultActivity extends BaseMenuActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        ListView listView=(ListView)findViewById(R.id.request_list);
+        ListView listView=(ListView)findViewById(R.id.requestList);
         ArrayList<RequestRentalDetails> objects = new ArrayList<RequestRentalDetails>();
         //dummy data, don't take this seriously
         objects.add(new RequestRentalDetails("Economy", "$524.50","Fits 2 people"));

@@ -1,14 +1,32 @@
 package com.arunika.arlingtonauto.DAO;
-
-import com.arunika.arlingtonauto.model.User;
+import android.content.ContentValues;
+import android.content.Context;
+import android.database.Cursor;
+import android.database.SQLException;
+import android.database.sqlite.SQLiteDatabase;
+import com.arunika.arlingtonauto.DATABASE.DBHelper;
+import com.arunika.arlingtonauto.model.Reservation;
+import java.util.ArrayList;
 
 public class ReservationDAO {
-    public static boolean uniqueUsername(String username) {
-        boolean result = false;
-        return result;
+    private static Context context;
+    private static SQLiteDatabase Database;
+    private static DBHelper DBHelper;
+
+    private static ReservationDAO instance;
+    public static synchronized ReservationDAO getInstance(Context context) {
+        if (instance == null) {
+            instance = new ReservationDAO(context);
+        }
+        return instance;
     }
-    public static User getUser(String username) {
-        User user = new User();
-        return user;
+    private ReservationDAO(Context context) {
+        DBHelper = DBHelper.getInstance(context);
+        this.context = context;
+        try {
+            Database = DBHelper.getWritableDatabase(); // open the database
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 }

@@ -2,6 +2,7 @@ package com.arunika.arlingtonauto.model;
 
 import android.annotation.TargetApi;
 import android.os.Build;
+import android.widget.Toast;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
@@ -21,8 +22,6 @@ public class Reservation implements Serializable {
     private int hasGps;
     private int hasOnstar;
     private int hasSirius;
-    private int isCanceled;
-    private int isDeleted;
     private double totalPrice;
     private String startTimeAsString;
     private String endTimeAsString;
@@ -63,6 +62,12 @@ public class Reservation implements Serializable {
     public void setId(int id) {
         this.id = id;
     }
+    public int getUserId() {
+        return userId;
+    }
+    public void setUserId(int userId) {
+        this.userId = userId;
+    }
     public int getCarId(){
         return carId;
     }
@@ -99,29 +104,19 @@ public class Reservation implements Serializable {
     public void setHasSirius(int hasSirius){
         this.hasSirius=hasSirius;
     }
-    public int getIsCanceled() {
-        return isCanceled;
-    }
-    public void setIsCanceled(int isCanceled){
-        this.isCanceled=isCanceled;
-    }
-    public int getIsDeleted() {
-        return isDeleted;
-    }
-    public void setIsDeleted(int isDeleted){
-        this.isDeleted=isDeleted;
-    }
-    public void setStartAndEndTimes(String startTime, String endTime) {
-        this.startTimeAsString = startTime;
-        this.endTimeAsString = endTime;
-        this.startTime = convertStringToDate(startTime);
-        this.endTime = convertStringToDate(endTime);
+
+    public void setStartAndEndTimes(String startTimeAsString, String endTimeAsString) {
+        this.startTimeAsString = startTimeAsString;
+        this.endTimeAsString = endTimeAsString;
+        this.startTime = convertStringToDate(startTimeAsString);
+        this.endTime = convertStringToDate(endTimeAsString);
     }
 
     @TargetApi(Build.VERSION_CODES.O)
     private LocalDateTime convertStringToDate(String string) {
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("uuuu-MM-dd HH:mm", Locale.US).withResolverStyle(ResolverStyle.STRICT);
-        return LocalDateTime.parse(string, formatter);
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM-dd-yyyy HH:mm");
+        LocalDateTime dateTime = LocalDateTime.parse(string, formatter);
+        return dateTime;
     }
 
     //without add-ons, tax, discount

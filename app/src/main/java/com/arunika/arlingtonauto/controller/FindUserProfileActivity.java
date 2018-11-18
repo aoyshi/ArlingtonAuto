@@ -22,7 +22,7 @@ public class FindUserProfileActivity extends BaseMenuActivity {
     }
 
     private void initViews() {
-        this.usernameField = (EditText) findViewById(R.id.username);
+        this.usernameField = (EditText) findViewById(R.id.checkOutDate);
     }
 
     public void onSearch(View view) {

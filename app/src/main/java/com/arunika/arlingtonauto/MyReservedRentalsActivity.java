@@ -26,7 +26,7 @@ public class MyReservedRentalsActivity extends BaseMenuActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        ListView listView=(ListView)findViewById(R.id.request_list);
+        ListView listView=(ListView)findViewById(R.id.requestList);
         ArrayList<CustomObject> objects = new ArrayList<CustomObject>();
         objects.add(new CustomObject("Economy", "$560.99","Fits 2 people",
                 "10-30-2018 11:00 TO 11-02-2018 20:00","Extras: GPS | OnStar |","Confirmation #: 13"));

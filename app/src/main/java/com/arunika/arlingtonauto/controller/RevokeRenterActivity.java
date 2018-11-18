@@ -6,8 +6,11 @@ import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
+
+import com.arunika.arlingtonauto.DAO.CarDAO;
 import com.arunika.arlingtonauto.DAO.UserDAO;
 import com.arunika.arlingtonauto.R;
+import com.arunika.arlingtonauto.model.Car;
 import com.arunika.arlingtonauto.model.User;
 import java.util.ArrayList;
 import es.dmoral.toasty.Toasty;
@@ -30,7 +33,7 @@ public class RevokeRenterActivity extends BaseMenuActivity {
         displayRevokeList();
     }
     private void initViews() {
-        this.usernameField = (EditText) findViewById(R.id.username);
+        this.usernameField = (EditText) findViewById(R.id.checkOutDate);
         this.revokeListView = (ListView) findViewById(R.id.revokeList);
     }
 
@@ -39,7 +42,7 @@ public class RevokeRenterActivity extends BaseMenuActivity {
         String username = usernameField.getText().toString().trim();
         User targetUser = UserDAO.getUser(username);
         if(targetUser == null) {
-            Toasty.error(this, "This username does not exist!", Toast.LENGTH_LONG, true).show();
+           Toasty.error(this, "This username does not exist!", Toast.LENGTH_LONG, true).show();
         }
         else {
             /**

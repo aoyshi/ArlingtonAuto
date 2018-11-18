@@ -20,16 +20,97 @@ public class MainActivity extends AppCompatActivity {
     private EditText usernameField;
     private EditText passwordField;
     private UserDAO UserDAO;
+    private CarDAO CarDAO;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         initViews(); //initialize all text field objects
         this.UserDAO = UserDAO.getInstance(this); //call singleton
+        this.CarDAO = CarDAO.getInstance(this); // call singleton
+        initCars(); //initialize all cars in the database.
     }
     private void initViews() {
         this.usernameField = (EditText) findViewById(R.id.username);
         this.passwordField = (EditText) findViewById(R.id.password);
+    }
+    private void initCars() {
+        Car car1 = new Car();
+        car1.setId(1);
+        car1.setName("Smart");
+        car1.setCapacity(1);
+        car1.setWeekdayRate(32.99);
+        car1.setWeekendRate(37.99);
+        car1.setWeeklyRate(230.93);
+        car1.setDailyGps(3);
+        car1.setDailyOnstar(5);
+        car1.setDailySirius(7);
+
+        Car car2 = new Car();
+        car2.setId(2);
+        car2.setName("Economy");
+        car2.setCapacity(3);
+        car2.setWeekdayRate(39.99);
+        car2.setWeekendRate(44.99);
+        car2.setWeeklyRate(279.93);
+        car2.setDailyGps(3);
+        car2.setDailyOnstar(5);
+        car2.setDailySirius(7);
+
+        Car car3 = new Car();
+        car3.setId(3);
+        car3.setName("Compact");
+        car3.setCapacity(4);
+        car3.setWeekdayRate(44.99);
+        car3.setWeekendRate(49.99);
+        car3.setWeeklyRate(314.93);
+        car3.setDailyGps(3);
+        car3.setDailyOnstar(5);
+        car3.setDailySirius(7);
+
+        Car car4 = new Car();
+        car4.setId(4);
+        car4.setName("Intermediate");
+        car4.setCapacity(4);
+        car4.setWeekdayRate(45.99);
+        car4.setWeekendRate(50.99);
+        car4.setWeeklyRate(321.93);
+        car4.setDailyGps(3);
+        car4.setDailyOnstar(5);
+        car4.setDailySirius(7);
+
+        Car car5 = new Car();
+        car5.setId(5);
+        car5.setName("Standard");
+        car5.setCapacity(5);
+        car5.setWeekdayRate(48.99);
+        car5.setWeekendRate(53.99);
+        car5.setWeeklyRate(342.93);
+        car5.setDailyGps(3);
+        car5.setDailyOnstar(5);
+        car5.setDailySirius(7);
+
+        Car car6 = new Car();
+        car6.setId(6);
+        car6.setName("Full Size");
+        car6.setCapacity(6);
+        car6.setWeekdayRate(52.99);
+        car6.setWeekendRate(57.99);
+        car6.setWeeklyRate(370.93);
+        car6.setDailyGps(3);
+        car6.setDailyOnstar(5);
+        car6.setDailySirius(7);
+
+        long insertId = 0;
+        insertId = this.CarDAO.insertCar(car1);
+        insertId = this.CarDAO.insertCar(car2);
+        insertId = this.CarDAO.insertCar(car3);
+        insertId = this.CarDAO.insertCar(car4);
+        insertId = this.CarDAO.insertCar(car5);
+        insertId = this.CarDAO.insertCar(car6);
+
+        //See if insertion was successfull. toast should show ID=6. if it shows id=-1, then it means insertion wasn't successful for some reason (bug)
+        Toast.makeText(this, "last car id: "+insertId, Toast.LENGTH_SHORT).show();
     }
     public void onLogin(View view) {
         String username = usernameField.getText().toString();
@@ -74,9 +155,6 @@ public class MainActivity extends AppCompatActivity {
         startActivity(new Intent(this,
                 RegistrationActivity.class));
     }
-    public void addCar(View view) {
-    }
-
 }
 
 

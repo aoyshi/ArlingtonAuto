@@ -71,14 +71,13 @@ public class ReservationDAO {
     }
 
     private static ArrayList<ReservationDetails> getResList(String query) {
-        ArrayList<ReservationDetails> resList = null;
+        ArrayList<ReservationDetails> resList = resList = new ArrayList<>();
         Cursor cursor = Database.rawQuery(query, null);
         ReservationDetails reservationDetails;
         try {
             // looping through all rows and adding res to list
             if (cursor.moveToFirst()) {
                 do {
-                    resList = new ArrayList<>();
                     reservationDetails = new ReservationDetails();
                     //set res attributes from db
                     reservationDetails.setId(cursor.getInt(cursor.getColumnIndex(DBHelper.COLUMN_RESERVATION_ID)));

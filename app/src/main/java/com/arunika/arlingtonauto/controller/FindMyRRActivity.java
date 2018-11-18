@@ -53,7 +53,7 @@ public class FindMyRRActivity extends BaseMenuActivity {
         //get list of customer's RRs in given time range
         ArrayList<ReservationDetails> myResList = ReservationDAO.getInstance(this)
                 .getCustomerReservations(startTimeAsString, endTimeAsString, currentUser.getId());
-        if(myResList != null) {
+        if(myResList.size()>0) {
             //send list to next activity
             Intent intent = new Intent();
             intent.putExtra("myResList",(Serializable) myResList);

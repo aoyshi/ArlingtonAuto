@@ -21,6 +21,6 @@ public class CustomerHomeActivity extends SystemUserActivity {
         startActivity(new Intent(this,RequestRentalActivity.class));
     }
     public void viewMyRR(View view) {
-        Toasty.success(this,"I work - View RR!", Toast.LENGTH_SHORT, true).show();
+        startActivity(new Intent(this,FindMyRRActivity.class));
     }
 }

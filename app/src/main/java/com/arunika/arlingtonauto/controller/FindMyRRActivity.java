@@ -1,9 +1,11 @@
 package com.arunika.arlingtonauto.controller;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.arunika.arlingtonauto.DAO.ReservationDAO;
 import com.arunika.arlingtonauto.R;
@@ -12,7 +14,10 @@ import com.arunika.arlingtonauto.model.ReservationDetails;
 import com.arunika.arlingtonauto.model.User;
 import com.google.gson.Gson;
 
+import java.io.Serializable;
 import java.util.ArrayList;
+
+import es.dmoral.toasty.Toasty;
 
 public class FindMyRRActivity extends BaseMenuActivity {
 
@@ -48,7 +53,16 @@ public class FindMyRRActivity extends BaseMenuActivity {
         //get list of customer's RRs in given time range
         ArrayList<ReservationDetails> myResList = ReservationDAO.getInstance(this)
                 .getCustomerReservations(startTimeAsString, endTimeAsString, currentUser.getId());
-        //do stuff here
+        if(myResList != null) {
+            //send list to next activity
+            Intent intent = new Intent();
+            intent.putExtra("myResList",(Serializable) myResList);
+            intent.setClass(this,ViewMyRRActivity.class);
+            startActivity(intent);
+        }
+        else {
+            Toasty.info(this, "No reservations found", Toast.LENGTH_LONG, true).show();
+        }
 
     }
 

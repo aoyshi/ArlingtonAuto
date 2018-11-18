@@ -1,4 +1,5 @@
 package com.arunika.arlingtonauto.DAO;
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.SQLException;
@@ -30,11 +31,12 @@ public class CarDAO {
         }
     }
 
-    public static ArrayList<Car> getAvailableCarsForCustomer(String searchStart, String searchEnd, int capacity) {
+    public static ArrayList<Car> getAvailableCarsForCustomer(
+            String searchStart, String searchEnd, int capacity) {
         String query = "SELECT * FROM " + DBHelper.TABLE_CAR
                 + " WHERE "+DBHelper.COLUMN_CAR_CAPACITY+">="+capacity
                 + " AND "+DBHelper.COLUMN_CAR_ID + " NOT IN ( SELECT "
-                + DBHelper.COLUMN_CAR_ID+" FROM " + DBHelper.TABLE_RESERVATION
+                + DBHelper.COLUMN_RESERVATION_CAR_ID+" FROM " + DBHelper.TABLE_RESERVATION
                 + " WHERE "+DBHelper.COLUMN_RESERVATION_CHECK_OUT+" <= '"+searchEnd
                 + "' AND '"+searchStart+"' <= "+DBHelper.COLUMN_RESERVATION_RETURN+"  )"
                 + " ORDER BY " + DBHelper.COLUMN_CAR_CAPACITY;
@@ -44,7 +46,7 @@ public class CarDAO {
     public static ArrayList<Car> getAvailableCarsForManager(String searchStart, String searchEnd) {
         String query = "SELECT * FROM " + DBHelper.TABLE_CAR
                 + " WHERE " + DBHelper.COLUMN_CAR_ID + " NOT IN ( SELECT "
-                + DBHelper.COLUMN_CAR_ID + " FROM " + DBHelper.TABLE_RESERVATION
+                + DBHelper.COLUMN_RESERVATION_CAR_ID + " FROM " + DBHelper.TABLE_RESERVATION
                 + " WHERE " + DBHelper.COLUMN_RESERVATION_CHECK_OUT + " <= '" + searchEnd
                 + "' AND '" + searchStart+"' <= " + DBHelper.COLUMN_RESERVATION_RETURN + "  )"
                 + " ORDER BY " + DBHelper.COLUMN_CAR_CAPACITY;
@@ -104,5 +106,21 @@ public class CarDAO {
         }
         cursor.close();
         return car;
+    }
+
+    //debug hook - will be removed later
+    public static long insertCar(Car car) {
+        ContentValues values = new ContentValues();
+        values.put(DBHelper.COLUMN_CAR_ID, car.getId());
+        values.put(DBHelper.COLUMN_CAR_NAME, car.getName());
+        values.put(DBHelper.COLUMN_CAR_CAPACITY, car.getCapacity());
+        values.put(DBHelper.COLUMN_CAR_WEEKDAY_RATE, car.getWeekdayRate());
+        values.put(DBHelper.COLUMN_CAR_WEEKEND_RATE, car.getWeekendRate());
+        values.put(DBHelper.COLUMN_CAR_WEEKLY_RATE, car.getWeeklyRate());
+        values.put(DBHelper.COLUMN_CAR_DAILY_GPS, car.getDailyGps());
+        values.put(DBHelper.COLUMN_CAR_DAILY_ONSTAR, car.getDailyOnstar());
+        values.put(DBHelper.COLUMN_CAR_DAILY_SIRIUS, car.getDailySirius());
+        long insertId = Database.insert(DBHelper.TABLE_CAR, null, values);
+        return insertId;
     }
 }

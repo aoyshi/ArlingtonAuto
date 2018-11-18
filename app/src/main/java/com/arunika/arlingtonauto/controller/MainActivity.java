@@ -7,8 +7,10 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 import com.arunika.arlingtonauto.R;
+import com.arunika.arlingtonauto.model.Car;
 import com.arunika.arlingtonauto.model.User;
 import com.arunika.arlingtonauto.DAO.UserDAO;
+import com.arunika.arlingtonauto.DAO.CarDAO;
 import com.google.gson.Gson;
 import es.dmoral.toasty.Toasty;
 /**
@@ -69,8 +71,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onRegisterBtnClick(View view) {
-        startActivity(new Intent(MainActivity.this,
+        startActivity(new Intent(this,
                 RegistrationActivity.class));
+    }
+    public void addCar(View view) {
     }
 
 }

@@ -14,7 +14,7 @@ public class DBHelper extends SQLiteOpenHelper {
      */
     //USER TABLE COLUMNS
     public static final String TABLE_USER = "USER";
-    public static final String COLUMN_USER_ID = "id";
+    public static final String COLUMN_USER_ID = "userId";
     public static final String COLUMN_USER_FIRST_NAME = "firstName";
     public static final String COLUMN_USER_LAST_NAME = "lastName";
     public static final String COLUMN_USER_UTA_ID = "utaId";
@@ -26,8 +26,8 @@ public class DBHelper extends SQLiteOpenHelper {
     public static final String COLUMN_USER_AAC_MEMBERSHIP = "aacMembership";
     //CAR TABLE COLUMNS
     public static final String TABLE_CAR = "CAR";
-    public static final String COLUMN_CAR_ID = "id";
-    public static final String COLUMN_CAR_NAME = "name";
+    public static final String COLUMN_CAR_ID = "carId";
+    public static final String COLUMN_CAR_NAME = "carName";
     public static final String COLUMN_CAR_CAPACITY = "capacity";
     public static final String COLUMN_CAR_WEEKDAY_RATE = "weekdayRate";
     public static final String COLUMN_CAR_WEEKEND_RATE = "weekendRate";
@@ -37,9 +37,9 @@ public class DBHelper extends SQLiteOpenHelper {
     public static final String COLUMN_CAR_DAILY_ONSTAR = "dailyOnstar";
     //RESERVATION TABLE COLUMNS
     public static final String TABLE_RESERVATION = "RESERVATION";
-    public static final String COLUMN_RESERVATION_ID = "id";
-    public static final String COLUMN_RESERVATION_CAR_ID = "carId";
-    public static final String COLUMN_RESERVATION_USER_ID = "userId";
+    public static final String COLUMN_RESERVATION_ID = "resId";
+    public static final String COLUMN_RESERVATION_CAR_ID = "rCarId";
+    public static final String COLUMN_RESERVATION_USER_ID = "rUserId";
     public static final String COLUMN_RESERVATION_CHECK_OUT = "checkOut";
     public static final String COLUMN_RESERVATION_RETURN = "return";
     public static final String COLUMN_RESERVATION_HAS_GPS = "hasGps";
@@ -65,7 +65,7 @@ public class DBHelper extends SQLiteOpenHelper {
     //CREATE USER CAR
     private static final String SQL_CREATE_TABLE_CAR = "CREATE TABLE " + TABLE_CAR + "("
             + COLUMN_CAR_ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
-            + COLUMN_CAR_NAME + " TEXT NOT NULL,"
+            + COLUMN_CAR_NAME + " TEXT NOT NULL UNIQUE,"
             + COLUMN_CAR_CAPACITY + " INTEGER NOT NULL,"
             + COLUMN_CAR_WEEKDAY_RATE + " DOUBLE NOT NULL,"
             + COLUMN_CAR_WEEKEND_RATE + " DOUBLE NOT NULL,"
@@ -114,11 +114,6 @@ public class DBHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         db.execSQL(SQL_CREATE_TABLE_USER);
         db.execSQL(SQL_CREATE_TABLE_CAR);
-        db.execSQL(SQL_CREATE_TABLE_RESERVATION);
-    }
-
-    public void update(SQLiteDatabase db) {
-        db.execSQL("DROP TABLE IF EXISTS " + TABLE_RESERVATION);
         db.execSQL(SQL_CREATE_TABLE_RESERVATION);
     }
 

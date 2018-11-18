@@ -29,5 +29,7 @@
         <activity android:name=".controller.ReserveRentalActivity" />
         <activity android:name=".controller.ConfirmRentalActivity" />
         <activity android:name=".controller.SummaryRentalActivity" />
+        <activity android:name=".controller.FindMyRRActivity" />
+        <activity android:name=".controller.ViewMyRRActivity" />
     </application>
 </manifest>

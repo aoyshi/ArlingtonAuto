@@ -65,7 +65,7 @@ public class RequestRentalActivity extends BaseMenuActivity {
             //add object to list
             availableRentalList.add(reservationDetails);
         }
-        if(availableRentalList != null) {
+        if(availableRentalList.size()>0) {
             //send list to next activity
             Intent intent = new Intent();
             intent.putExtra("availableResDetailsList",(Serializable) availableRentalList);

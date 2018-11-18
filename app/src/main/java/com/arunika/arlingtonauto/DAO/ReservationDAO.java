@@ -47,23 +47,26 @@ public class ReservationDAO {
 
     public static ArrayList<ReservationDetails> getCustomerReservations
             (String searchStart, String searchEnd, int userId) {
-        String query = "SELECT * FROM CAR,USER,RESERVATION "
-                + " WHERE carId = rCarId AND userId=rUserId "
-                + " AND userId="+userId+" AND checkOut <= '"+searchEnd+"' and '"+searchStart+"' <= return"
-                + " ORDER BY checkOut DESC";
+        String query = "SELECT * FROM "
+                + DBHelper.TABLE_CAR+","+DBHelper.TABLE_RESERVATION+","+DBHelper.TABLE_USER+" "
+                + " WHERE "+DBHelper.COLUMN_CAR_ID+" = "+DBHelper.COLUMN_RESERVATION_CAR_ID
+                + " AND "+DBHelper.COLUMN_USER_ID+" = "+DBHelper.COLUMN_RESERVATION_USER_ID
+                + " AND "+DBHelper.COLUMN_USER_ID+" = "+userId
+                + " AND "+DBHelper.COLUMN_RESERVATION_CHECK_OUT+" <= '"+searchEnd
+                + "' AND '"+searchStart+"' <= "+DBHelper.COLUMN_RESERVATION_RETURN
+                + " ORDER BY "+DBHelper.COLUMN_RESERVATION_CHECK_OUT+" DESC";
         return getResList(query);
     }
 
     public static ArrayList<ReservationDetails> getManagerReservations
             (String searchStart, String searchEnd) {
-        String query = "";
-        /*
-        String query = " SELECT * "
-				+ " FROM reservation,user,car,payment"
-				+ " WHERE payment.id=reservation.payment_id AND payment.user_id=user.id AND car.id=reservation.car_id"
-				+ " AND iscanceled!=1 AND isdeleted !=1 AND start_time <= '"+searchEnd+"' and '"+searchStart+"' <= end_time"
-				+ " ORDER BY start_time DESC";
-    	*/
+        String query = "SELECT * FROM "
+                + DBHelper.TABLE_CAR+","+DBHelper.TABLE_RESERVATION+","+DBHelper.TABLE_USER+" "
+                + " WHERE "+DBHelper.COLUMN_CAR_ID+" = "+DBHelper.COLUMN_RESERVATION_CAR_ID
+                + " AND "+DBHelper.COLUMN_USER_ID+" = "+DBHelper.COLUMN_RESERVATION_USER_ID
+                + " AND "+DBHelper.COLUMN_RESERVATION_CHECK_OUT+" <= '"+searchEnd
+                + "' AND '"+searchStart+"' <= "+DBHelper.COLUMN_RESERVATION_RETURN
+                + " ORDER BY "+DBHelper.COLUMN_RESERVATION_CHECK_OUT+" DESC";
         return getResList(query);
     }
 

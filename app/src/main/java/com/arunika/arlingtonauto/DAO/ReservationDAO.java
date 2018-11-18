@@ -71,7 +71,7 @@ public class ReservationDAO {
     }
 
     private static ArrayList<ReservationDetails> getResList(String query) {
-        ArrayList<ReservationDetails> resList = resList = new ArrayList<>();
+        ArrayList<ReservationDetails> resList = new ArrayList<>();
         Cursor cursor = Database.rawQuery(query, null);
         ReservationDetails reservationDetails;
         try {

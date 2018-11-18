@@ -26,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
         this.UserDAO = UserDAO.getInstance(this); //call singleton
     }
     private void initViews() {
-        this.usernameField = (EditText) findViewById(R.id.checkOutDate);
+        this.usernameField = (EditText) findViewById(R.id.username);
         this.passwordField = (EditText) findViewById(R.id.password);
     }
     public void onLogin(View view) {

@@ -31,7 +31,7 @@ public class RequestRentalActivity extends BaseMenuActivity {
         initViews();
     }
     private void initViews() {
-        this.checkOutDateField = (EditText) findViewById(R.id.checkOutDate);
+        this.checkOutDateField = (EditText) findViewById(R.id.username);
         this.checkOutTimeField = (EditText) findViewById(R.id.checkOutTime);
         this.returnDateField = (EditText) findViewById(R.id.returnDate);
         this.returnTimeField = (EditText) findViewById(R.id.returnTime);

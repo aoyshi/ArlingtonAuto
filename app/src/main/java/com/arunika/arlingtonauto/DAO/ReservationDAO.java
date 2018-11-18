@@ -6,6 +6,8 @@ import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import com.arunika.arlingtonauto.DATABASE.DBHelper;
 import com.arunika.arlingtonauto.model.Reservation;
+import com.arunika.arlingtonauto.model.ReservationDetails;
+
 import java.util.ArrayList;
 
 public class ReservationDAO {
@@ -41,6 +43,12 @@ public class ReservationDAO {
         values.put(DBHelper.COLUMN_RESERVATION_TOTAL_PRICE, reservation.getTotalPrice());
         long insertId = Database.insert(DBHelper.TABLE_RESERVATION, null, values);
         return insertId;
+    }
+    public static ArrayList<ReservationDetails> getCustomerReservations(
+            String start, String end, int userId) {
 
+        ArrayList<ReservationDetails> myResList = new ArrayList<>();
+        //do stuff here
+        return myResList;
     }
 }

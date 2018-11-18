@@ -65,8 +65,8 @@
         android:layout_marginBottom="7dp"
         android:text="CheckOut Date:"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/checkOutDate"
-        app:layout_constraintEnd_toStartOf="@+id/checkOutDate"
+        app:layout_constraintBottom_toBottomOf="@+id/username"
+        app:layout_constraintEnd_toStartOf="@+id/username"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
@@ -121,7 +121,7 @@
         app:layout_constraintStart_toEndOf="@+id/textView8" />
 
     <EditText
-        android:id="@+id/checkOutDate"
+        android:id="@+id/username"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
@@ -156,6 +156,6 @@
         android:text="08:00"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/textView6"
-        app:layout_constraintTop_toBottomOf="@+id/checkOutDate" />
+        app:layout_constraintTop_toBottomOf="@+id/username" />
 
 </android.support.constraint.ConstraintLayout>

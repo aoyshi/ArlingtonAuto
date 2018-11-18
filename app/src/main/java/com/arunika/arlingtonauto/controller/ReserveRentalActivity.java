@@ -11,7 +11,6 @@ import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 import com.arunika.arlingtonauto.R;
 import com.arunika.arlingtonauto.model.ReservationDetails;
 import java.util.ArrayList;

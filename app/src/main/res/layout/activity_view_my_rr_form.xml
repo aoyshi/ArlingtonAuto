@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".controller.MainActivity"
+    tools:context=".controller.FindMyRRActivity"
     tools:layout_editor_absoluteY="81dp">
 
 
@@ -72,7 +72,7 @@
         android:layout_width="137dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
-        android:onClick="searchRR"
+        android:onClick="onSearchRR"
         android:text="Search"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.502"
@@ -87,7 +87,7 @@
         android:layout_marginBottom="24dp"
         android:ems="10"
         android:inputType="date"
-        android:text="10/18/2018"
+        android:text="10-29-2018"
         app:layout_constraintBottom_toTopOf="@+id/textView30"
         app:layout_constraintStart_toEndOf="@+id/textView29" />
 
@@ -97,7 +97,7 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="date"
-        android:text="11/02/2018"
+        android:text="11-01-2018"
         app:layout_constraintBottom_toTopOf="@+id/endTime"
         app:layout_constraintStart_toStartOf="@+id/startTime" />
 
@@ -108,7 +108,7 @@
         android:layout_marginTop="4dp"
         android:ems="10"
         android:inputType="time"
-        android:text="11:00am"
+        android:text="20:00"
         app:layout_constraintStart_toStartOf="@+id/startDate"
         app:layout_constraintTop_toBottomOf="@+id/startDate" />
 
@@ -118,7 +118,7 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="time"
-        android:text="05:00pm"
+        android:text="08:00"
         app:layout_constraintBottom_toTopOf="@+id/textView32"
         app:layout_constraintEnd_toEndOf="@+id/endDate"
         app:layout_constraintTop_toTopOf="@+id/textView32"

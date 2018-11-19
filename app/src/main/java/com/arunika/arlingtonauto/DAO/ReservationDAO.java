@@ -4,6 +4,8 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
+import android.provider.ContactsContract;
+
 import com.arunika.arlingtonauto.DATABASE.DBHelper;
 import com.arunika.arlingtonauto.model.Reservation;
 import com.arunika.arlingtonauto.model.ReservationDetails;
@@ -68,6 +70,14 @@ public class ReservationDAO {
                 + "' AND '"+searchStart+"' <= "+DBHelper.COLUMN_RESERVATION_RETURN
                 + " ORDER BY "+DBHelper.COLUMN_RESERVATION_CHECK_OUT+" DESC";
         return getResList(query);
+    }
+
+    public static void deleteReservation(int resId) {
+        String query = "DELETE FROM " + DBHelper.TABLE_RESERVATION
+                + " WHERE " + DBHelper.COLUMN_RESERVATION_ID + " = " + resId;
+        Cursor cursor = Database.rawQuery(query, null);
+        cursor.moveToFirst();
+        cursor.close();
     }
 
     private static ArrayList<ReservationDetails> getResList(String query) {

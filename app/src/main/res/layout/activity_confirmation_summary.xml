@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".controller.MainActivity"
+    tools:context=".controller.SummaryRentalActivity"
     tools:layout_editor_absoluteY="81dp">
 
     <TextView
@@ -27,6 +27,7 @@
         android:layout_width="162dp"
         android:layout_height="0dp"
         android:layout_marginBottom="146dp"
+        android:onClick="onBackHome"
         android:text="Back to Home"
         android:textSize="18sp"
         android:textStyle="bold"

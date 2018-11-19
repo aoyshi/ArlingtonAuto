@@ -38,7 +38,7 @@ public class BaseMenuActivity extends AppCompatActivity {
                 return super.onOptionsItemSelected(item);
         }
     }
-    private void goBackHome() {
+    public void goBackHome() {
         User currentUser;
         if (preferences.contains("currentUser")) {
             /**

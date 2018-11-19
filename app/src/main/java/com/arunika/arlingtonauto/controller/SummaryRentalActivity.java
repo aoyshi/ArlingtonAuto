@@ -2,6 +2,7 @@ package com.arunika.arlingtonauto.controller;
 
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.TextView;
 
 import com.arunika.arlingtonauto.DAO.CarDAO;
@@ -20,4 +21,9 @@ public class SummaryRentalActivity extends BaseMenuActivity {
         long confirmationNumber = getIntent().getLongExtra("confirmationNumber",0);
         confirmationField.setText(Long.toString(confirmationNumber));
     }
+
+    public void onBackHome(View view) {
+        goBackHome(); //call method in Base Menu Activity
+    }
+
 }

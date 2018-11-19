@@ -97,7 +97,7 @@ public class ReservationDAO {
                             cursor.getString(cursor.getColumnIndex(DBHelper.COLUMN_RESERVATION_RETURN)));
                     reservationDetails.setCarName(cursor.getString(cursor.getColumnIndex(DBHelper.COLUMN_CAR_NAME)));
                     reservationDetails.setCapacity(cursor.getInt(cursor.getColumnIndex(DBHelper.COLUMN_CAR_CAPACITY)));
-                    reservationDetails.setHasSirius(cursor.getInt(cursor.getColumnIndex(DBHelper.COLUMN_RESERVATION_HAS_GPS)));
+                    reservationDetails.setHasGps(cursor.getInt(cursor.getColumnIndex(DBHelper.COLUMN_RESERVATION_HAS_GPS)));
                     reservationDetails.setHasOnstar(cursor.getInt(cursor.getColumnIndex(DBHelper.COLUMN_RESERVATION_HAS_ONSTAR)));
                     reservationDetails.setHasSirius(cursor.getInt(cursor.getColumnIndex(DBHelper.COLUMN_RESERVATION_HAS_SIRIUS)));
                     reservationDetails.setTotalPrice(cursor.getDouble(cursor.getColumnIndex(DBHelper.COLUMN_RESERVATION_TOTAL_PRICE)));

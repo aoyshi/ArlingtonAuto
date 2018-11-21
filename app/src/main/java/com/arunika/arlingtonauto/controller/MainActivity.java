@@ -21,14 +21,19 @@ public class MainActivity extends AppCompatActivity {
     private EditText passwordField;
     private UserDAO UserDAO;
     private CarDAO CarDAO;
+
+    static boolean isInitialized = false;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         initViews(); //initialize all text field objects
         this.UserDAO = UserDAO.getInstance(this); //call singleton
-        this.CarDAO = CarDAO.getInstance(this); // call singleton
-        initCars(); //initialize all cars in the database.
+        if (!isInitialized) {
+            this.CarDAO = CarDAO.getInstance(this); // call singleton
+            initCars(); //initialize all cars in the database.
+            isInitialized = true;
+        }
     }
     private void initViews() {
         this.usernameField = (EditText) findViewById(R.id.username);
@@ -110,7 +115,7 @@ public class MainActivity extends AppCompatActivity {
         insertId = this.CarDAO.insertCar(car6);
 
         //See if insertion was successfull. toast should show ID=6. if it shows id=-1, then it means insertion wasn't successful for some reason (bug)
-        Toast.makeText(this, "last car id: "+insertId, Toast.LENGTH_SHORT).show();
+        //Toast.makeText(this, "last car id: "+insertId, Toast.LENGTH_SHORT).show();
     }
     public void onLogin(View view) {
         String username = usernameField.getText().toString();

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".controller.FindAllRRActivity"
+    tools:context=".controller.FindAllAvailableCarsActivity"
     tools:layout_editor_absoluteY="81dp">
 
 
@@ -14,7 +14,7 @@
         android:layout_height="101dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
-        android:text="View All Rental Reservations"
+        android:text="View All Available Cars"
         android:textSize="27sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
@@ -73,7 +73,7 @@
         android:layout_width="137dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
-        android:onClick="onSearchAllRR"
+        android:onClick="onSearchAllAvailableCars"
         android:text="Search"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.502"

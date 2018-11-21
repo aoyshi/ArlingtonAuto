@@ -11,16 +11,19 @@ import es.dmoral.toasty.Toasty;
  *  EditOwnProfile and Logout.
  *  This inheritance keeps code centralized and cleaner.
  */
-public class ManagerHomeActivity extends BaseMenuActivity {
+public class ManagerHomeActivity extends SystemUserActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_manager_home);
     }
-    public void viewAllAvailableCars(View view) {
-        Toasty.success(this,"I work - View Availables!", Toast.LENGTH_SHORT, true).show();
-    }
+
     public void viewAllRR(View view) {
-        Toasty.success(this,"I work - View All RR!", Toast.LENGTH_SHORT, true).show();
+        //Toasty.success(this,"I work - View All RR!", Toast.LENGTH_SHORT, true).show();
+        startActivity(new Intent(this,FindAllRRActivity.class));
+    }
+    public void viewAllAvailableCars(View view) {
+        //Toasty.success(this,"I work - View Availables!", Toast.LENGTH_SHORT, true).show();
+        startActivity(new Intent(this,FindAllAvailableCarsActivity.class));
     }
 }

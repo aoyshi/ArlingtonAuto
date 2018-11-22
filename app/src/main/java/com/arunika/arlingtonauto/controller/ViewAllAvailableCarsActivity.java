@@ -60,7 +60,7 @@ public class ViewAllAvailableCarsActivity extends BaseMenuActivity {
             this.activity= activity;
         }
         @Override
-        public int getCount() {   //Arunika, carList is always null
+        public int getCount() {
             if (carList != null) {
                 return carList.size();
             }
@@ -93,13 +93,13 @@ public class ViewAllAvailableCarsActivity extends BaseMenuActivity {
             holder.siriusRateTextView = (TextView) convertView.findViewById(R.id.siriusRate);
 
             holder.carNameTextView.setText("Car Name: " + carList.get(position).getName());
-            holder.capacityTextView.setText("Capacity" + carList.get(position).getCapacity());
+            holder.capacityTextView.setText("Capacity: " + carList.get(position).getCapacity());
             holder.weekdayTextView.setText("Weekday Rate: $" + carList.get(position).getWeekdayRate());
             holder.weekendRateTextView.setText("Weekend Rate: $" + carList.get(position).getWeekendRate());
             holder.weekRateTextView.setText("Week Rate: $" + carList.get(position).getWeeklyRate());
-            holder.gpsRateTextView.setText("GPS: $" + carList.get(position).getDailyGps());
-            holder.onstarRateTextView.setText("OnStar :$" + carList.get(position).getDailyOnstar());
-            holder.siriusRateTextView.setText("Sirium: $" + carList.get(position).getDailySirius());
+            holder.gpsRateTextView.setText("GPS Rate: $" + carList.get(position).getDailyGps());
+            holder.onstarRateTextView.setText("OnStar Rate: $" + carList.get(position).getDailyOnstar());
+            holder.siriusRateTextView.setText("Sirium Rate: $" + carList.get(position).getDailySirius());
 
             return convertView;
         }

@@ -45,13 +45,13 @@ public class FindAllAvailableCarsActivity extends BaseMenuActivity {
                 + endTimeField.getText().toString();
 
         //get list of Available cars in given time range
-        ArrayList<Car> resList = CarDAO.getInstance(this)
+        ArrayList<Car> allCarList = CarDAO.getInstance(this)
                 .getAvailableCarsForManager(startTimeAsString, endTimeAsString);
 
-        if (resList.size() > 0) {
+        if (allCarList.size() > 0) {
             //send list to next activity
             Intent intent = new Intent();
-            intent.putExtra("resList", (Serializable) resList);
+            intent.putExtra("allCarList", (Serializable) allCarList);
             intent.setClass(this, ViewAllAvailableCarsActivity.class);
             startActivity(intent);
         } else {

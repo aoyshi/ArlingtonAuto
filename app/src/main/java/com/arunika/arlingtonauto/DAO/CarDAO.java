@@ -49,7 +49,7 @@ public class CarDAO {
                 + DBHelper.COLUMN_RESERVATION_CAR_ID + " FROM " + DBHelper.TABLE_RESERVATION
                 + " WHERE " + DBHelper.COLUMN_RESERVATION_CHECK_OUT + " <= '" + searchEnd
                 + "' AND '" + searchStart+"' <= " + DBHelper.COLUMN_RESERVATION_RETURN + "  )"
-                + " ORDER BY " + DBHelper.COLUMN_CAR_CAPACITY;
+                + " ORDER BY " + DBHelper.COLUMN_CAR_NAME;
         return getCarList(query);
     }
 

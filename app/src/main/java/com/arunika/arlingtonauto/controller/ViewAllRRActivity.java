@@ -2,6 +2,7 @@ package com.arunika.arlingtonauto.controller;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.RequiresApi;
@@ -80,11 +81,11 @@ public class ViewAllRRActivity extends BaseMenuActivity {
 
             holder.carNameTextView = (TextView) convertView.findViewById(R.id.carName);
             holder.durationField = (TextView) convertView.findViewById(R.id.duration);
-            holder.renterUsernameTextView = (TextView) convertView.findViewById(R.id.username);
+            holder.renterUsernameTextView = (TextView) convertView.findViewById(R.id.renterUsername);
             holder.viewBtn = (Button) convertView.findViewById(R.id.viewBtn);
             holder.deleteBtn = (Button) convertView.findViewById(R.id.deleteBtn);
 
-            holder.carNameTextView.setText("Car Name: " + resList.get(position).getCarName());
+            holder.carNameTextView.setText(resList.get(position).getCarName());
             holder.durationField.setText(resList.get(position).getStartTimeAsString() +" TO "+
                     resList.get(position).getEndTimeAsString());
             holder.renterUsernameTextView.setText("Renter: " + resList.get(position).getRenterUsername());
@@ -95,12 +96,14 @@ public class ViewAllRRActivity extends BaseMenuActivity {
                 @RequiresApi(api = Build.VERSION_CODES.O)
                 @Override
                 public void onClick(View v) {
-                    //int cancelPos = (int) v.getTag();
-
                     //Go to linked page
+                    Intent intent = new Intent();
+                    intent.putExtra("selectedReservation",reservationDetails);
+                    intent.setClass(getApplicationContext(),ViewRRDetailsActivity.class);
+                    startActivity(intent);
 
                     //TBD message
-                    Toasty.success(getApplicationContext(), "View Reservation Button Clicked", Toast.LENGTH_LONG, true).show();
+                    //Toasty.success(getApplicationContext(), "View Reservation Button Clicked", Toast.LENGTH_LONG, true).show();
                 }
             });
             holder.deleteBtn.setTag(position);
@@ -109,14 +112,26 @@ public class ViewAllRRActivity extends BaseMenuActivity {
                 @RequiresApi(api = Build.VERSION_CODES.O)
                 @Override
                 public void onClick(View v) {
-                    //int cancelPos = (int) v.getTag();
-
-                    //DELETE Reservation
-
-                    //TBD message
-                    Toasty.success(getApplicationContext(), "Delete Reservation Button Clicked", Toast.LENGTH_LONG, true).show();
+                    int deletePos = (int) v.getTag();
+                    //check if res in past or not
+                    LocalDateTime checkOut = resList.get(deletePos).getStartTime();
+                    if(checkOut.isBefore(LocalDateTime.now())) {
+                        Toasty.error(getApplicationContext(), "Cannot cancel rentals in the past!", Toast.LENGTH_LONG, true).show();
+                    }
+                    else {
+                        //delete res from DB
+                        ReservationDAO.getInstance(getApplicationContext())
+                                .deleteReservation(resList.get(deletePos).getId());
+                        //remove res from the list
+                        resList.remove(deletePos);
+                        CustomAdapter.this.notifyDataSetChanged();
+                        //confirmation message
+                        Toasty.success(getApplicationContext(), "Successfully Cancelled!", Toast.LENGTH_LONG, true).show();
+                    }
+                    //Toasty.success(getApplicationContext(), "Delete Reservation Button Clicked", Toast.LENGTH_LONG, true).show();
                 }
-            });return convertView;
+            });
+            return convertView;
         }
     }
 }

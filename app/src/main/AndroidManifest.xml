@@ -35,5 +35,6 @@
         <activity android:name=".controller.ViewAllRRActivity" />
         <activity android:name=".controller.FindAllAvailableCarsActivity" />
         <activity android:name=".controller.ViewAllAvailableCarsActivity" />
+        <activity android:name=".controller.ViewRRDetailsActivity" />
     </application>
 </manifest>

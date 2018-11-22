@@ -44,12 +44,12 @@ public class FindAllRRActivity extends BaseMenuActivity {
                 + endTimeField.getText().toString();
 
         //get list of RRs in given time range
-        ArrayList<ReservationDetails> resList = ReservationDAO.getInstance(this)
+        ArrayList<ReservationDetails> allResList = ReservationDAO.getInstance(this)
                 .getManagerReservations(startTimeAsString, endTimeAsString);
-        if (resList.size() > 0) {
+        if (allResList.size() > 0) {
             //send list to next activity
             Intent intent = new Intent();
-            intent.putExtra("resList", (Serializable) resList);
+            intent.putExtra("allResList", (Serializable) allResList);
             intent.setClass(this, ViewAllRRActivity.class);
             startActivity(intent);
         } else {

@@ -40,7 +40,6 @@ public class ViewRRDetailsActivity extends  BaseMenuActivity {
         setContentView(R.layout.activity_view_rr_details);
         //get selected reservation from intent
         selectedReservation = (ReservationDetails) getIntent().getSerializableExtra("selectedReservation");
-        //selectedCar = CarDAO.getInstance(this).getCar(selectedReservation.getCarId());
         getViews();
     }
 

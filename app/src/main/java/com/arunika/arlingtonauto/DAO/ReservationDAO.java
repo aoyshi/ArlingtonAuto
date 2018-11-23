@@ -4,7 +4,6 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
-import android.provider.ContactsContract;
 
 import com.arunika.arlingtonauto.DATABASE.DBHelper;
 import com.arunika.arlingtonauto.model.Reservation;

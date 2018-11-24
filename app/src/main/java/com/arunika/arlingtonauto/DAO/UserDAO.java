@@ -110,7 +110,8 @@ public class UserDAO {
         ArrayList<String> revokeeList = new ArrayList<String>();
         String query = "SELECT  "+ DBHelper.COLUMN_USER_USERNAME +" FROM "
                 + DBHelper.TABLE_USER + " WHERE "
-                + DBHelper.COLUMN_USER_IS_REVOKED + "=1";
+                + DBHelper.COLUMN_USER_IS_REVOKED + "=1 "
+                + " ORDER BY " + DBHelper.COLUMN_USER_USERNAME;
         Cursor cursor = Database.rawQuery(query, null);
         try {
             // looping through all rows and adding username to list

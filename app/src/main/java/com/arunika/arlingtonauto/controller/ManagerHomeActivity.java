@@ -19,11 +19,9 @@ public class ManagerHomeActivity extends SystemUserActivity {
     }
 
     public void viewAllRR(View view) {
-        //Toasty.success(this,"I work - View All RR!", Toast.LENGTH_SHORT, true).show();
         startActivity(new Intent(this,FindAllRRActivity.class));
     }
     public void viewAllAvailableCars(View view) {
-        //Toasty.success(this,"I work - View Availables!", Toast.LENGTH_SHORT, true).show();
         startActivity(new Intent(this,FindAllAvailableCarsActivity.class));
     }
 }

@@ -36,5 +36,6 @@
         <activity android:name=".controller.FindAllAvailableCarsActivity" />
         <activity android:name=".controller.ViewAllAvailableCarsActivity" />
         <activity android:name=".controller.ViewRRDetailsActivity" />
+        <activity android:name=".controller.RevokeeActivity" />
     </application>
 </manifest>

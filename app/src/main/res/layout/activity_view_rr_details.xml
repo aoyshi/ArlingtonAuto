@@ -142,8 +142,8 @@
         android:id="@+id/capacity"
         android:layout_width="24dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="44dp"
-        android:layout_marginEnd="44dp"
+        android:layout_marginStart="48dp"
+        android:layout_marginEnd="48dp"
         android:layout_marginBottom="17dp"
         android:text="3"
         android:textSize="19sp"
@@ -177,8 +177,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="25dp"
         android:text="GPS | SiriusXM"
-        android:textSize="19sp"
-        app:layout_constraintStart_toStartOf="@+id/totalPrice"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="@+id/returnBy"
         app:layout_constraintTop_toBottomOf="@+id/returnBy" />
 
     <TextView
@@ -195,10 +195,11 @@
         android:id="@+id/confirmationNumber"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
+        android:layout_marginStart="173dp"
+        android:layout_marginEnd="173dp"
         android:text="22"
         android:textSize="19sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/textView37"
         app:layout_constraintTop_toTopOf="@+id/textView42" />
 </android.support.constraint.ConstraintLayout>

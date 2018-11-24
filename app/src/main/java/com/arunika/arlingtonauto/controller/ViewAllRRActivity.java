@@ -115,7 +115,7 @@ public class ViewAllRRActivity extends BaseMenuActivity {
                     int deletePos = (int) v.getTag();
                     //check if res in past or not
                     LocalDateTime checkOut = resList.get(deletePos).getStartTime();
-                    if(checkOut.isBefore(LocalDateTime.now())) {
+                   if(checkOut.isBefore(LocalDateTime.now())) {
                         Toasty.error(getApplicationContext(), "Cannot delete rentals in the past!", Toast.LENGTH_LONG, true).show();
                     }
                     else {
@@ -128,7 +128,6 @@ public class ViewAllRRActivity extends BaseMenuActivity {
                         //confirmation message
                         Toasty.success(getApplicationContext(), "Successfully Deleted!", Toast.LENGTH_LONG, true).show();
                     }
-                    //Toasty.success(getApplicationContext(), "Delete Reservation Button Clicked", Toast.LENGTH_LONG, true).show();
                 }
             });
             return convertView;

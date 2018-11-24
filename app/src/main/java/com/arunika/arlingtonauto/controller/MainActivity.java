@@ -6,6 +6,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import com.arunika.arlingtonauto.DATABASE.DBHelper;
 import com.arunika.arlingtonauto.R;
 import com.arunika.arlingtonauto.model.Car;
 import com.arunika.arlingtonauto.model.User;
@@ -21,7 +23,6 @@ public class MainActivity extends AppCompatActivity {
     private EditText passwordField;
     private UserDAO UserDAO;
     private CarDAO CarDAO;
-
     static boolean isInitialized = false;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -106,16 +107,48 @@ public class MainActivity extends AppCompatActivity {
         car6.setDailyOnstar(5);
         car6.setDailySirius(7);
 
-        long insertId = 0;
-        insertId = this.CarDAO.insertCar(car1);
-        insertId = this.CarDAO.insertCar(car2);
-        insertId = this.CarDAO.insertCar(car3);
-        insertId = this.CarDAO.insertCar(car4);
-        insertId = this.CarDAO.insertCar(car5);
-        insertId = this.CarDAO.insertCar(car6);
+        Car car7 = new Car();
+        car7.setId(7);
+        car7.setName("SUV");
+        car7.setCapacity(8);
+        car7.setWeekdayRate(59.99);
+        car7.setWeekendRate(64.99);
+        car7.setWeeklyRate(419.93);
+        car7.setDailyGps(3);
+        car7.setDailyOnstar(5);
+        car7.setDailySirius(7);
 
-        //See if insertion was successfull. toast should show ID=6. if it shows id=-1, then it means insertion wasn't successful for some reason (bug)
-        //Toast.makeText(this, "last car id: "+insertId, Toast.LENGTH_SHORT).show();
+        Car car8 = new Car();
+        car8.setId(8);
+        car8.setName("MiniVan");
+        car8.setCapacity(9);
+        car8.setWeekdayRate(59.99);
+        car8.setWeekendRate(64.99);
+        car8.setWeeklyRate(419.93);
+        car8.setDailyGps(3);
+        car8.setDailyOnstar(5);
+        car8.setDailySirius(7);
+
+        Car car9 = new Car();
+        car9.setId(9);
+        car9.setName("Ultra Sports");
+        car9.setCapacity(2);
+        car9.setWeekdayRate(199.99);
+        car9.setWeekendRate(204.99);
+        car9.setWeeklyRate(1399.93);
+        car9.setDailyGps(5);
+        car9.setDailyOnstar(7);
+        car9.setDailySirius(9);
+
+        long insertId1 = CarDAO.getInstance(this).insertCar(car1);
+        long insertId2 = CarDAO.getInstance(this).insertCar(car2);
+        long insertId3 = CarDAO.getInstance(this).insertCar(car3);
+        long insertId4 = CarDAO.getInstance(this).insertCar(car4);
+        long insertId5 = CarDAO.getInstance(this).insertCar(car5);
+        long insertId6 = CarDAO.getInstance(this).insertCar(car6);
+        long insertId7 = CarDAO.getInstance(this).insertCar(car7);
+        long insertId8 = CarDAO.getInstance(this).insertCar(car8);
+        long insertId9 = CarDAO.getInstance(this).insertCar(car9);
     }
     public void onLogin(View view) {
         String username = usernameField.getText().toString();

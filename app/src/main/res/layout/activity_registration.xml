@@ -49,7 +49,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="15dp"
         android:text="UTA ID:"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
@@ -60,7 +60,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="15dp"
         android:layout_marginEnd="10dp"
         android:text="Username:"
         android:textStyle="bold"
@@ -72,7 +72,7 @@
         android:id="@+id/textView23"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="11dp"
+        android:layout_marginEnd="10dp"
         android:layout_marginBottom="6dp"
         android:text="Password:"
         android:textStyle="bold"
@@ -84,45 +84,50 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
+        android:layout_marginTop="20dp"
         android:layout_marginEnd="39dp"
-        android:layout_marginBottom="19dp"
         android:text="Email:"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/textView25"
         app:layout_constraintEnd_toStartOf="@+id/email"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView23" />
 
     <TextView
         android:id="@+id/textView25"
         android:layout_width="wrap_content"
         android:layout_height="27dp"
         android:layout_marginStart="24dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginBottom="12dp"
         android:text="AAC Member?"
         android:textStyle="bold"
-        app:layout_constraintBaseline_toBaselineOf="@+id/aacMembership"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintBottom_toTopOf="@+id/textView26"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/email" />
 
     <TextView
         android:id="@+id/textView26"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
+        android:layout_marginStart="1dp"
         android:text="Role:"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="@+id/textView25"
-        app:layout_constraintTop_toBottomOf="@+id/textView25" />
+        app:layout_constraintTop_toTopOf="@+id/role" />
 
     <Button
         android:id="@+id/updateBtn"
         android:layout_width="134dp"
         android:layout_height="46dp"
+        android:layout_marginTop="16dp"
         android:layout_marginBottom="16dp"
         android:onClick="onRegister"
         android:text="Register"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/role" />
 
     <EditText
         android:id="@+id/firstName"
@@ -141,15 +146,15 @@
         android:id="@+id/lastName"
         android:layout_width="0dp"
         android:layout_height="45dp"
-        android:layout_marginTop="82dp"
-        android:layout_marginBottom="82dp"
+        android:layout_marginTop="106dp"
+        android:layout_marginBottom="106dp"
         android:ems="10"
         android:inputType="textPersonName"
         android:textSize="14sp"
-        app:layout_constraintBottom_toTopOf="@+id/textView23"
-        app:layout_constraintEnd_toEndOf="@+id/password"
-        app:layout_constraintStart_toStartOf="@+id/firstName"
-        app:layout_constraintTop_toTopOf="@+id/textView18" />
+        app:layout_constraintBottom_toBottomOf="@+id/password"
+        app:layout_constraintEnd_toEndOf="@+id/utaId"
+        app:layout_constraintStart_toStartOf="@+id/utaId"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/username"
@@ -159,7 +164,7 @@
         android:inputType="textPersonName"
         android:textSize="14sp"
         app:layout_constraintBottom_toTopOf="@+id/textView22"
-        app:layout_constraintEnd_toEndOf="@+id/firstName"
+        app:layout_constraintEnd_toEndOf="@+id/utaId"
         app:layout_constraintStart_toStartOf="@+id/utaId"
         app:layout_constraintTop_toTopOf="@+id/textView22" />
 
@@ -168,7 +173,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="18dp"
-        android:layout_marginEnd="69dp"
+        android:layout_marginEnd="68dp"
         android:ems="10"
         android:inputType="number"
         android:textSize="14sp"
@@ -193,7 +198,7 @@
         android:id="@+id/email"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="69dp"
+        android:layout_marginEnd="68dp"
         android:ems="10"
         android:inputType="textEmailAddress"
         android:textSize="14sp"
@@ -214,8 +219,8 @@
         android:id="@+id/radioGroup2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="22dp"
-        android:layout_marginEnd="24dp"
+        android:layout_marginTop="21dp"
+        android:layout_marginEnd="23dp"
         app:layout_constraintEnd_toEndOf="@+id/aacMembership"
         app:layout_constraintTop_toBottomOf="@+id/email" />
 
@@ -226,24 +231,20 @@
         android:layout_marginStart="28dp"
         android:checked="true"
         android:text="Yes"
-        app:layout_constraintBottom_toBottomOf="@+id/radioGroup2"
+        app:layout_constraintBottom_toTopOf="@+id/radioGroup"
         app:layout_constraintStart_toStartOf="@+id/email"
-        app:layout_constraintTop_toBottomOf="@+id/radioGroup2" />
+        app:layout_constraintTop_toTopOf="@+id/radioGroup" />
 
     <RadioGroup
         android:id="@+id/role"
         android:layout_width="219dp"
         android:layout_height="85dp"
-        android:layout_marginStart="57dp"
-        android:layout_marginTop="55dp"
-        android:layout_marginEnd="53dp"
-        android:layout_marginBottom="57dp"
-        app:layout_constraintBottom_toBottomOf="@+id/updateBtn"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/email"
-        app:layout_constraintVertical_bias="1.0">
+        android:layout_marginStart="79dp"
+        android:layout_marginTop="77dp"
+        android:layout_marginBottom="78dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/textView25"
+        app:layout_constraintTop_toTopOf="@+id/textView27">
 
         <RadioButton
             android:id="@+id/Customer"

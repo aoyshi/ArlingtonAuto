@@ -86,8 +86,7 @@
         android:layout_marginStart="20dp"
         android:layout_marginBottom="24dp"
         android:ems="10"
-        android:inputType="date"
-        android:text="10-29-2018"
+        android:inputType="text"
         app:layout_constraintBottom_toTopOf="@+id/textView30"
         app:layout_constraintStart_toEndOf="@+id/textView29" />
 
@@ -96,8 +95,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:inputType="date"
-        android:text="11-01-2018"
+        android:inputType="text"
         app:layout_constraintBottom_toTopOf="@+id/endTime"
         app:layout_constraintStart_toStartOf="@+id/startTime" />
 
@@ -107,8 +105,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
         android:ems="10"
-        android:inputType="time"
-        android:text="20:00"
+        android:inputType="text"
         app:layout_constraintStart_toStartOf="@+id/startDate"
         app:layout_constraintTop_toBottomOf="@+id/startDate" />
 
@@ -117,8 +114,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:inputType="time"
-        android:text="08:00"
+        android:inputType="text"
         app:layout_constraintBottom_toTopOf="@+id/textView32"
         app:layout_constraintEnd_toEndOf="@+id/endDate"
         app:layout_constraintTop_toTopOf="@+id/textView32"
